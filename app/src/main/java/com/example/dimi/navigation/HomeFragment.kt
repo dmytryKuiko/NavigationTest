@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import kotlinx.android.synthetic.main.fragment_home.*
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -14,7 +16,6 @@ private const val ARG_PARAM2 = "param2"
 class HomeFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
-    private var listener: OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,27 +30,11 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_home, container, false)
 
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnFragmentInteractionListener) {
-            listener = context
-        } else {
-            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
-        }
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        listener = null
-    }
-
-    interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onFragmentInteraction(uri: Uri)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        goToNextButton?.setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_stepOneFragment)
+        )
     }
 
     companion object {
