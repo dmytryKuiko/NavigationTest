@@ -21,6 +21,10 @@
         <action
             android:id="@+id/action_stepOneFragment_to_stepTwoFragment"
             app:destination="@id/stepTwoFragment" />
+        <argument
+            android:name="someName"
+            android:defaultValue="122"
+            app:type="integer" />
     </fragment>
     <fragment
         android:id="@+id/stepTwoFragment"

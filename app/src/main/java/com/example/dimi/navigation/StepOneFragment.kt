@@ -34,6 +34,10 @@ class StepOneFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val valueFromXml = arguments?.let {
+            val safeArgs = StepOneFragmentArgs.fromBundle(it)
+            safeArgs.someName
+        }
         goToNextButton?.setOnClickListener {
             Navigation.findNavController(it)
                 .navigate(R.id.action_stepOneFragment_to_stepTwoFragment)
