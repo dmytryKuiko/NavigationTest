@@ -32,8 +32,16 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        val bundle = Bundle().apply {
+            putInt("someIntManual", 222)
+        }
+
         goToNextButton?.setOnClickListener(
-            Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_stepOneFragment)
+            Navigation.createNavigateOnClickListener(
+                R.id.action_homeFragment_to_stepOneFragment,
+                bundle
+            )
         )
     }
 

@@ -38,6 +38,11 @@ class StepOneFragment : Fragment() {
             val safeArgs = StepOneFragmentArgs.fromBundle(it)
             safeArgs.someName
         }
+
+        val valueFromBundle = arguments?.let {
+            it.getInt("someIntManual")
+        }
+
         goToNextButton?.setOnClickListener {
             Navigation.findNavController(it)
                 .navigate(R.id.action_stepOneFragment_to_stepTwoFragment)
