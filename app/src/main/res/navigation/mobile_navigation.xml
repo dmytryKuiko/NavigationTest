@@ -57,6 +57,7 @@
             tools:layout="@layout/fragment_tutorial_fragment_second" ></fragment>
         <action
             android:id="@+id/action_tutorial_to_stepOneFragment"
-            app:destination="@id/stepOneFragment" />
+            app:destination="@id/stepOneFragment"
+            app:popUpTo="@+id/homeFragment" />
     </navigation>
 </navigation>
