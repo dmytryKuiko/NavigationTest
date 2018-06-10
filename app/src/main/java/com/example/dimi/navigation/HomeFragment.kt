@@ -43,6 +43,9 @@ class HomeFragment : Fragment() {
                 bundle
             )
         )
+        goToTutorial?.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_tutorial)
+        }
     }
 
     companion object {
