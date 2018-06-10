@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_homeFragment_to_stepOneFragment"
             app:destination="@id/stepOneFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_tutorial"
+            app:destination="@id/tutorial" />
     </fragment>
     <fragment
         android:id="@+id/stepOneFragment"
@@ -35,4 +38,25 @@
             android:id="@+id/action_stepTwoFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <navigation
+        android:id="@+id/tutorial"
+        app:startDestination="@id/tutorialFragmentFirst">
+        <fragment
+            android:id="@+id/tutorialFragmentFirst"
+            android:name="com.example.dimi.navigation.TutorialFragmentFirst"
+            android:label="fragment_tutorial_fragment_first"
+            tools:layout="@layout/fragment_tutorial_fragment_first" >
+            <action
+                android:id="@+id/action_tutorialFragmentFirst_to_tutorialFragmentSecond"
+                app:destination="@id/tutorialFragmentSecond" />
+        </fragment>
+        <fragment
+            android:id="@+id/tutorialFragmentSecond"
+            android:name="com.example.dimi.navigation.TutorialFragmentSecond"
+            android:label="fragment_tutorial_fragment_second"
+            tools:layout="@layout/fragment_tutorial_fragment_second" ></fragment>
+        <action
+            android:id="@+id/action_tutorial_to_stepOneFragment"
+            app:destination="@id/stepOneFragment" />
+    </navigation>
 </navigation>
