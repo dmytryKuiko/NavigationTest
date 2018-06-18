@@ -19,6 +19,9 @@ class StepTwoFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        val valueFromDeepLink = arguments?.getString("someArgFromWidget")
+
         goToFirstButton.setOnClickListener {
             val options = NavOptions.Builder()
                 .setEnterAnim(R.anim.slide_in_right)

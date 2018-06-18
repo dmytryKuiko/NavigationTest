@@ -3,7 +3,9 @@ package com.example.dimi.navigation
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
+import android.os.Bundle
 import android.widget.RemoteViews
+import androidx.navigation.NavDeepLinkBuilder
 
 /**
  * Implementation of App Widget functionality.
@@ -36,10 +38,20 @@ class DeepLinkAppWidgetProvider : AppWidgetProvider() {
             appWidgetId: Int
         ) {
 
-            val widgetText = context.getString(R.string.appwidget_text)
             // Construct the RemoteViews object
             val views = RemoteViews(context.packageName, R.layout.deep_link_app_widget_provider)
-            views.setTextViewText(R.id.appwidget_text, widgetText)
+
+            val args = Bundle().apply {
+                putString("someArgFromWidget", "Hello this is from Widget")
+            }
+
+            val pendingIntent = NavDeepLinkBuilder(context)
+                .setGraph(R.navigation.mobile_navigation)
+                .setDestination(R.id.stepTwoFragment)
+                .setArguments(args)
+                .createPendingIntent()
+
+            views.setOnClickPendingIntent(R.id.deepLinkButton, pendingIntent)
 
             // Instruct the widget manager to update the widget
             appWidgetManager.updateAppWidget(appWidgetId, views)
